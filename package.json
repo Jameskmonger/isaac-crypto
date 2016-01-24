@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Jameskmonger/isaac-crypto/issues"
   },
-  "homepage": "https://github.com/Jameskmonger/isaac-crypto#readme"
+  "homepage": "https://github.com/Jameskmonger/isaac-crypto#readme",
+  "devDependencies": {
+    "chai": "^3.4.1"
+  }
 }
