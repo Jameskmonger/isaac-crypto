@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Jameskmonger/isaac-crypto#readme",
   "devDependencies": {
     "chai": "^3.4.1",
+    "istanbul": "^0.4.2",
     "mocha": "^2.3.4",
     "tslint": "^3.3.0",
     "typescript": "^1.7.5"
