@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Jameskmonger/isaac-crypto.git"
   },
-  "author": "James Monger",
+  "author": "James Monger <jameskmonger@hotmail.co.uk> (http://jamesmonger.com)",
   "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/Jameskmonger/isaac-crypto/issues"
