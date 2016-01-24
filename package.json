@@ -21,6 +21,7 @@
     "gulp": "^3.9.0",
     "istanbul": "^0.4.2",
     "mocha": "^2.3.4",
+    "run-sequence": "^1.1.5",
     "tslint": "^3.3.0",
     "typescript": "^1.7.5"
   }
