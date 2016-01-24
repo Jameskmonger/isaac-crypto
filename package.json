@@ -1,0 +1,19 @@
+{
+  "name": "isaac-crypto",
+  "version": "0.0.1",
+  "description": "An ISAAC implementation for Node.JS",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jameskmonger/isaac-crypto.git"
+  },
+  "author": "James Monger",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/Jameskmonger/isaac-crypto/issues"
+  },
+  "homepage": "https://github.com/Jameskmonger/isaac-crypto#readme"
+}
