@@ -8,7 +8,9 @@ class GulpEnvironment {
   }
 
   public registerTasks(): void {
-
+    gulp.task('bla', () => {
+      console.log("bla bla bla");
+    });
   }
 }
 
