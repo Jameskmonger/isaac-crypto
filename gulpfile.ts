@@ -1,9 +1,11 @@
 /// <reference path="typings/gulp/gulp.d.ts" />
+/// <reference path="typings/run-sequence/run-sequence.d.ts" />
 
 import * as gulp from 'gulp';
+import * as sequence from 'run-sequence';
+
 const tape = require('gulp-tape');
 const tsc = require('gulp-tsc');
-const sequence = require('runSequence');
 
 class GulpEnvironment {
   constructor() { }
@@ -18,6 +20,11 @@ class GulpEnvironment {
     gulp.task('run:test', () => {
       gulp.src('build-test/test/*.test.js')
         .pipe(tape());
+    });
+
+    gulp.task('test', () => {
+      sequence('build:test',
+          'run:test');
     });
   }
 }
