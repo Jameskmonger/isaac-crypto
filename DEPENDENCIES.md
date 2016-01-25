@@ -10,4 +10,3 @@ None
 * [tape](https://www.npmjs.com/package/tape) (^4.4.0)
 * [tslint](https://www.npmjs.com/package/tslint) (^3.3.0)
 * [typescript](https://www.npmjs.com/package/typescript) (^1.7.5)
-
