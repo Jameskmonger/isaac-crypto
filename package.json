@@ -4,7 +4,7 @@
   "description": "An ISAAC implementation for Node.JS",
   "main": " ",
   "scripts": {
-    "test": "gulp test",
+    "test": "npm run gulp-build && gulp test",
     "gulp-build": "tsc gulpfile --module commonjs"
   },
   "repository": {
@@ -19,10 +19,10 @@
   "homepage": "https://github.com/Jameskmonger/isaac-crypto#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-tapdot": "^1.0.0",
     "gulp-tape": "0.0.7",
     "gulp-tsc": "^1.1.4",
     "run-sequence": "^1.1.5",
+    "tap-spec": "^4.1.1",
     "tape": "^4.4.0",
     "tslint": "^3.3.0",
     "typescript": "^1.7.5"
