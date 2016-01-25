@@ -22,7 +22,6 @@
     "gulp-tape": "0.0.7",
     "gulp-tsc": "^1.1.4",
     "run-sequence": "^1.1.5",
-    "tap-colorize": "^1.2.0",
     "tape": "^4.4.0",
     "tslint": "^3.3.0",
     "typescript": "^1.7.5"
