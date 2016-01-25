@@ -6,6 +6,7 @@ import * as sequence from 'run-sequence';
 
 const tape = require('gulp-tape');
 const tsc = require('gulp-tsc');
+const tapColorize = require('tap-colorize');
 
 class GulpEnvironment {
   constructor() { }
@@ -19,7 +20,9 @@ class GulpEnvironment {
 
     gulp.task('run:test', () => {
       gulp.src('build-test/test/*.test.js')
-        .pipe(tape());
+        .pipe(tape({
+          reporter: tapColorize()
+        }));
     });
 
     gulp.task('test', () => {
