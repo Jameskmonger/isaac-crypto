@@ -3,6 +3,7 @@
 import * as gulp from 'gulp';
 const tape = require('gulp-tape');
 const tsc = require('gulp-tsc');
+const sequence = require('runSequence');
 
 class GulpEnvironment {
   constructor() { }
@@ -12,6 +13,11 @@ class GulpEnvironment {
       gulp.src(['test/**/*.ts'])
         .pipe(tsc())
         .pipe(gulp.dest('build-test/'))
+    });
+
+    gulp.task('run:test', () => {
+      gulp.src('build-test/test/*.test.js')
+        .pipe(tape());
     });
   }
 }
