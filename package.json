@@ -2,7 +2,7 @@
   "name": "isaac-crypto",
   "version": "0.0.1",
   "description": "An ISAAC implementation for Node.JS",
-  "main": " ",
+  "main": "",
   "scripts": { },
   "repository": {
     "type": "git",
