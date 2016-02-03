@@ -4,8 +4,7 @@
   "description": "An ISAAC implementation for Node.JS",
   "main": " ",
   "scripts": {
-    "test": "npm run gulp-build && gulp test",
-    "gulp-build": "tsc gulpfile --module commonjs"
+    
   },
   "repository": {
     "type": "git",
