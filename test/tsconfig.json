@@ -21,7 +21,6 @@
         "!node_modules/**"
     ],
     "files": [
-        "helloworld.test.ts",
         "random-number.provider.test.ts"
     ],
     "atom": {
