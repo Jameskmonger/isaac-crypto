@@ -23,7 +23,7 @@
     "files": [
         "bit-operations.test.ts",
         "isaac-generator.test.ts",
-        "random-number.provider.test.ts"
+        "random-number-provider.test.ts"
     ],
     "atom": {
         "rewriteTsconfig": true
