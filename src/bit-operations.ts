@@ -4,6 +4,9 @@ export class BitOperations {
   }
 
   public static getMostSignificantBit(input: number): number {
-    return 5;
+    let negative: boolean = (input < 0);
+
+    // If negative, the MSB is 0. Otherwise it's 1.
+    return negative ? 0 : 1;
   }
 }
