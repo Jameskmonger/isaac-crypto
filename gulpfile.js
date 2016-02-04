@@ -22,7 +22,8 @@ gulp.task("test:run", function (done) {
   gulp.src('build-test/test/**/*.test.js')
     .pipe(tape({
       reporter: tapSpec()
-    }));
+    }))
+    .on('end', done);;
 });
 
 gulp.task("test", ["test:build"], function (done) {
