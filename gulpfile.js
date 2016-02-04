@@ -14,7 +14,7 @@ gulp.task("test:clean", function(done) {
 });
 
 gulp.task("test:build", function (done) {
-  gulp.src(['test/**/*.ts'])
+  gulp.src('test/**/*.ts')
     .pipe(tsc())
     .pipe(gulp.dest('build-test/'))
     .on('end', done);
