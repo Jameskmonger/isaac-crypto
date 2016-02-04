@@ -7,8 +7,8 @@ var del = require('del');
 gulp.task("clean:test", function(done) {
   del(['build-test/**']).then(function(paths) {
     console.log("=====\nDeleted the following files:\n" + paths.join('\n')+ "\n=====");
+    done();
   });
-  done();
 });
 
 gulp.task("build:test", function (done) {
