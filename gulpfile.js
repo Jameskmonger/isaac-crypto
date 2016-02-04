@@ -3,6 +3,7 @@ var tsc = require('gulp-tsc');
 var tape = require('gulp-tape');
 var tapSpec = require('tap-spec');
 var del = require('del');
+var runSequence = require('run-sequence');
 
 gulp.task("test:clean", function(done) {
   del(['build-test/**']).then(function(paths) {
@@ -26,9 +27,6 @@ gulp.task("test:run", function (done) {
     .on('end', done);;
 });
 
-gulp.task("test", ["test:build"], function (done) {
-  gulp.src('build-test/test/**/*.test.js')
-    .pipe(tape({
-      reporter: tapSpec()
-    }));
+gulp.task("test", function (done) {
+  runSequence('test:clean', 'test:build', 'test:run', done);
 });
