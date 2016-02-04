@@ -20,6 +20,12 @@ gulp.task("test:build", function (done) {
     .on('end', done);
 });
 
+gulp.task("test:istanbul-hook", function (done) {
+  gulp.src('build-test/src/**/*.js')
+    .pipe(istanbul())
+    .on('end', done);
+});
+
 gulp.task("test:run", function (done) {
   gulp.src('build-test/test/**/*.test.js')
     .pipe(tape({
