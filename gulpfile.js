@@ -18,6 +18,13 @@ gulp.task("test:build", function (done) {
     .on('end', done);
 });
 
+gulp.task("test:run", function (done) {
+  gulp.src('build-test/test/**/*.test.js')
+    .pipe(tape({
+      reporter: tapSpec()
+    }));
+});
+
 gulp.task("test", ["test:build"], function (done) {
   gulp.src('build-test/test/**/*.test.js')
     .pipe(tape({
