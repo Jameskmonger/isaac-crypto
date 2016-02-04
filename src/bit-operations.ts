@@ -1,5 +1,5 @@
 export class BitOperations {
   public static getLeastSignificantBit(input: number): number {
-    return 0;
+    return input & 0b1;
   }
 }
