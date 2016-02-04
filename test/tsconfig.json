@@ -21,6 +21,7 @@
         "!node_modules/**"
     ],
     "files": [
+        "bit-operations.test.ts",
         "random-number.provider.test.ts"
     ],
     "atom": {
