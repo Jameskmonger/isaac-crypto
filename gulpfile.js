@@ -4,6 +4,11 @@ var tape = require('gulp-tape');
 var tapSpec = require('tap-spec');
 var del = require('del');
 
+gulp.task("clean:test", function(done) {
+  del(['build-test/']);
+  done();
+});
+
 gulp.task("build:test", function (done) {
   gulp.src(['test/**/*.ts'])
     .pipe(tsc())
