@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var tsc = require('gulp-tsc');
 var tape = require('gulp-tape');
 var tapSpec = require('tap-spec');
+var del = require('del');
 
 gulp.task("build:test", function (done) {
   gulp.src(['test/**/*.ts'])
