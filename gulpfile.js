@@ -11,14 +11,14 @@ gulp.task("test:clean", function(done) {
   });
 });
 
-gulp.task("build:test", function (done) {
+gulp.task("test:build", function (done) {
   gulp.src(['test/**/*.ts'])
     .pipe(tsc())
     .pipe(gulp.dest('build-test/'))
     .on('end', done);
 });
 
-gulp.task("test", ["build:test"], function (done) {
+gulp.task("test", ["test:build"], function (done) {
   gulp.src('build-test/test/**/*.test.js')
     .pipe(tape({
       reporter: tapSpec()
