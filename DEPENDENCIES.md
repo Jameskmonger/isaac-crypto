@@ -4,7 +4,6 @@ None
 
 ### For developers
 * [gulp](https://www.npmjs.com/package/gulp) (^3.9.0)
-* [gulp-tapdot](https://www.npmjs.com/package/gulp-tapdot) (^1.0.0)
 * [gulp-tape](https://www.npmjs.com/package/gulp-tape) (0.0.7)
 * [gulp-tsc](https://www.npmjs.com/package/gulp-tsc) (^1.1.4)
 * [tape](https://www.npmjs.com/package/tape) (^4.4.0)
