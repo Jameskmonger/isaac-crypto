@@ -17,6 +17,7 @@
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "^3.9.0",
+    "gulp-istanbul": "^0.10.3",
     "gulp-tape": "0.0.7",
     "gulp-tsc": "^1.1.4",
     "run-sequence": "^1.1.5",
