@@ -1,9 +1,9 @@
-var gulp = require('gulp');
-var tsc = require('gulp-tsc');
-var tape = require('gulp-tape');
-var tapSpec = require('tap-spec');
-var del = require('del');
-var runSequence = require('run-sequence');
+var gulp = require('gulp'),
+    tsc = require('gulp-tsc'),
+    tape = require('gulp-tape'),
+    tapSpec = require('tap-spec'),
+    del = require('del'),
+    runSequence = require('run-sequence');
 
 gulp.task("test:clean", function(done) {
   del(['build-test/**']).then(function(paths) {
