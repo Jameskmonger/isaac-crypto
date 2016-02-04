@@ -31,6 +31,7 @@ gulp.task("test:run", function (done) {
     .pipe(tape({
       reporter: tapSpec()
     }))
+    .pipe(istanbul.writeReports())
     .on('end', done);
 });
 
