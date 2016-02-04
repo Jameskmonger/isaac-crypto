@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "An ISAAC implementation for Node.JS",
   "main": "",
-  "scripts": { },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jameskmonger/isaac-crypto.git"
@@ -15,6 +15,7 @@
   },
   "homepage": "https://github.com/Jameskmonger/isaac-crypto#readme",
   "devDependencies": {
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-tape": "0.0.7",
     "gulp-tsc": "^1.1.4",
