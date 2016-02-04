@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     tape = require('gulp-tape'),
     tapSpec = require('tap-spec'),
     del = require('del'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence'),
+    istanbul = require('gulp-istanbul');
 
 gulp.task("test:clean", function(done) {
   del(['build-test/**']).then(function(paths) {
