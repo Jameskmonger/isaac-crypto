@@ -20,10 +20,10 @@ gulp.task("test:build", function (done) {
     .on('end', done);
 });
 
-gulp.task("test:istanbul-hook", function (done) {
-  gulp.src('build-test/src/**/*.js')
+gulp.task("test:istanbul-hook", function () {
+  return gulp.src('build-test/src/**/*.js')
     .pipe(istanbul())
-    .on('end', done);
+    .pipe(istanbul.hookRequire());
 });
 
 gulp.task("test:run", function (done) {
@@ -36,5 +36,5 @@ gulp.task("test:run", function (done) {
 });
 
 gulp.task("test", function (done) {
-  runSequence('test:clean', 'test:build', 'test:run', done);
+  runSequence('test:clean', 'test:build', 'test:istanbul-hook', 'test:run', done);
 });
