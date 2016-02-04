@@ -24,7 +24,7 @@ gulp.task("test:run", function (done) {
     .pipe(tape({
       reporter: tapSpec()
     }))
-    .on('end', done);;
+    .on('end', done);
 });
 
 gulp.task("test", function (done) {
