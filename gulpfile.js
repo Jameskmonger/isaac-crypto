@@ -4,7 +4,7 @@ var tape = require('gulp-tape');
 var tapSpec = require('tap-spec');
 var del = require('del');
 
-gulp.task("clean:test", function(done) {
+gulp.task("test:clean", function(done) {
   del(['build-test/**']).then(function(paths) {
     console.log("=====\nDeleted the following files:\n" + paths.join('\n')+ "\n=====");
     done();
