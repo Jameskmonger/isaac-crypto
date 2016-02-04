@@ -11,3 +11,4 @@ None
 * [tslint](https://www.npmjs.com/package/tslint) (^3.3.0)
 * [typescript](https://www.npmjs.com/package/typescript) (^1.7.5)
 * [del](https://www.npmjs.com/package/del) (^2.2.0)
+* [run-sequence](https://www.npmjs.com/package/run-sequence) (^1.1.5)
