@@ -11,7 +11,7 @@ gulp.task("build:test", function (done) {
 });
 
 gulp.task("test", ["build:test"], function (done) {
-  gulp.src('build-test/test/*.test.js')
+  gulp.src('build-test/test/**/*.test.js')
     .pipe(tape({
       reporter: tapSpec()
     }));
