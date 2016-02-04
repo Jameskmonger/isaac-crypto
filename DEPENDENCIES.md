@@ -13,3 +13,4 @@ None
 * [del](https://www.npmjs.com/package/del) (^2.2.0)
 * [run-sequence](https://www.npmjs.com/package/run-sequence) (^1.1.5)
 * [gulp-istanbul](https://www.npmjs.com/package/gulp-istanbul) (^0.10.3)
+* [tap-dot](https://www.npmjs.com/package/tap-dot) (^1.0.1)
