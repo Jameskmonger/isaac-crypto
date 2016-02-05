@@ -31,7 +31,9 @@ gulp.task("test:run", function (done) {
     .pipe(tape({
       reporter: tapSpec()
     }))
-    .pipe(istanbul.writeReports())
+    .pipe(istanbul.writeReports({
+      reporters: [ 'lcov', 'json', 'text-summary' ]
+    }))
     .on('end', done);
 });
 
