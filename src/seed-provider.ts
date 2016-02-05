@@ -1,4 +1,8 @@
 export class SeedProvider {
+  /*
+   * Some implementations generate these initial values.
+   * However they always remain the same, so they can just be provided.
+   */
   private _getInitialValues(): any {
     return {
       a: -3969392806,
