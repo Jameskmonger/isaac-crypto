@@ -17,7 +17,7 @@ test("_getInitialValues returns 8 values", (t) => {
 
   let values = provider["_getInitialValues"]();
 
-  t.equal(values.length, 8, "8 initial values");
+  t.equal(Object.keys(values).length, 8, "8 initial values");
   t.end();
 });
 
