@@ -13,8 +13,6 @@ export class Utils {
   }
 
   public static getSeedTestCases(seedValue: number) {
-    console.log(`getting ${seedValue}`);
-
     let outputs = [];
 
     var a = -3969392806;
