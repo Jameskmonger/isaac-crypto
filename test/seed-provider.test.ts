@@ -63,7 +63,7 @@ let testInitialSeededMemory = (location: number, input: number, expected: number
 
 for (let testCase of [
   [0, 0, 114073829], [1, 0, 2076997778], [2, 0, 447929969], [3, 0, 737963188],
-
+  [4, 0, 1426416244], [5, 0, -1348792071], [6, 0, 329369436], [7, 0, 270769140], 
 ]) {
   testInitialSeededMemory(testCase[0] as number, testCase[1] as number, testCase[2] as number);
 }
