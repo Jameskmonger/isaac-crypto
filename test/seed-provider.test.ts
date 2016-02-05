@@ -38,7 +38,9 @@ for (let testCase of [
   [ 'c', -1021952437 ],
   [ 'd', 255990488 ],
   [ 'e', -651539848 ],
-  [ 'f', -1525007287 ]
+  [ 'f', -1525007287 ],
+  [ 'g', -990909925 ],
+  [ 'h', 811634969 ]
 ]) {
   testValue(testCase[0] as string, testCase[1] as number);
 }
