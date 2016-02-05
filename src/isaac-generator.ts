@@ -6,6 +6,10 @@ export class IsaacGenerator {
   }
 
   public getValue(): number {
+    if (this._count === 0) {
+      this._randomise();
+    }
+
     return 0;
   }
 
