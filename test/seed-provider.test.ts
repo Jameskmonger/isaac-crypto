@@ -34,7 +34,9 @@ let testValue = (key: string, expected: number) => {
 
 for (let testCase of [
   [ 'a', -3969392806 ],
-  [ 'b', -1780940711 ]
+  [ 'b', -1780940711 ],
+  [ 'c', -1021952437 ],
+  [ 'd', 255990488 ]
 ]) {
   testValue(testCase[0] as string, testCase[1] as number);
 }
