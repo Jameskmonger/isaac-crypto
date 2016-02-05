@@ -44,3 +44,19 @@ for (let testCase of [
 ]) {
   testValue(testCase[0] as string, testCase[1] as number);
 }
+
+let testInitialSeededMemory = (location: number, input: number, expected: number) => {
+  let seed = [];
+  for (let i = 0; i < 256; i++) {
+    seed[i] = input;
+  }
+
+ test(`_getInitialSeededMemory()[${location}] is ${expected} when seed is made up of ${input}s`, (t) => {
+   let provider = new SeedProvider();
+
+   let values = provider["_getInitialSeededValues"](seed);
+
+   t.equal(values[location], expected, `correct value for ${location}`);
+   t.end();
+ });
+}
