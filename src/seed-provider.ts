@@ -1,4 +1,6 @@
 export class SeedProvider {
+  private SIZE: number = 256;
+
   /*
    * Some implementations generate these initial values.
    * However they always remain the same, so they can just be provided.
@@ -67,6 +69,57 @@ export class SeedProvider {
   }
 
   private _getShiftedMemory(seed: number[]): any {
-    return [];
+    let memory = this._getSeededMemory(seed);
+
+    let [a, b, c, d, e, f, g, h] = [
+      memory[this.SIZE - 8], memory[this.SIZE - 7], memory[this.SIZE - 6],
+      memory[this.SIZE - 5], memory[this.SIZE - 4], memory[this.SIZE - 3],
+      memory[this.SIZE - 2], memory[this.SIZE - 1]
+    ];
+
+    for (let i = 0; i < this.SIZE; i += 8) {
+			a += memory[i];
+			b += memory[i + 1];
+			c += memory[i + 2];
+			d += memory[i + 3];
+			e += memory[i + 4];
+			f += memory[i + 5];
+			g += memory[i + 6];
+			h += memory[i + 7];
+			a ^= b << 11;
+			d += a;
+			b += c;
+			b ^= c >>> 2;
+			e += b;
+			c += d;
+			c ^= d << 8;
+			f += c;
+			d += e;
+			d ^= e >>> 16;
+			g += d;
+			e += f;
+			e ^= f << 10;
+			h += e;
+			f += g;
+			f ^= g >>> 4;
+			a += f;
+			g += h;
+			g ^= h << 8;
+			b += g;
+			h += a;
+			h ^= a >>> 9;
+			c += h;
+			a += b;
+			memory[i] = a;
+			memory[i + 1] = b;
+			memory[i + 2] = c;
+			memory[i + 3] = d;
+			memory[i + 4] = e;
+			memory[i + 5] = f;
+			memory[i + 6] = g;
+			memory[i + 7] = h;
+		}
+
+    return memory;
   }
 }
