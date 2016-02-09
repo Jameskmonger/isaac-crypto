@@ -77,6 +77,62 @@ export class Utils {
     return memory;
   }
 
+  private static _getShiftedMemory(seedValue: number) {
+    let seed = Utils.createUniformSeed(seedValue);
+    let memory = Utils._getSeededMemory(seed);
+
+    let [a, b, c, d, e, f, g, h] = [
+      memory[Utils.SIZE - 8], memory[Utils.SIZE - 7], memory[Utils.SIZE - 6],
+      memory[Utils.SIZE - 5], memory[Utils.SIZE - 4], memory[Utils.SIZE - 3],
+      memory[Utils.SIZE - 2], memory[Utils.SIZE - 1]
+    ];
+
+    for (let i = 0; i < Utils.SIZE; i += 8) {
+      a += memory[i];
+      b += memory[i + 1];
+      c += memory[i + 2];
+      d += memory[i + 3];
+      e += memory[i + 4];
+      f += memory[i + 5];
+      g += memory[i + 6];
+      h += memory[i + 7];
+      a ^= b << 11;
+      d += a;
+      b += c;
+      b ^= c >>> 2;
+      e += b;
+      c += d;
+      c ^= d << 8;
+      f += c;
+      d += e;
+      d ^= e >>> 16;
+      g += d;
+      e += f;
+      e ^= f << 10;
+      h += e;
+      f += g;
+      f ^= g >>> 4;
+      a += f;
+      g += h;
+      g ^= h << 8;
+      b += g;
+      h += a;
+      h ^= a >>> 9;
+      c += h;
+      a += b;
+      memory[i] = a;
+      memory[i + 1] = b;
+      memory[i + 2] = c;
+      memory[i + 3] = d;
+      memory[i + 4] = e;
+      memory[i + 5] = f;
+      memory[i + 6] = g;
+      memory[i + 7] = h;
+    }
+
+    return memory;
+  }
+
   public static getSeedTestCases(seedValue: number) {
     let outputs = [];
 
