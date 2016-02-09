@@ -33,8 +33,10 @@ let testValue = (key: string, expected: number) => {
   });
 };
 
-for (let testCase of Utils.getInitialValues()) {
-  testValue(testCase[0] as string, testCase[1] as number);
+let initialValues = Utils.getInitialValues();
+
+for (let testCase of Object.keys(initialValues)) {
+  testValue(testCase as string, initialValues[testCase] as number);
 }
 
 let testInitialSeededMemory = (location: number, input: number, expected: number) => {
