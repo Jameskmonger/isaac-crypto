@@ -12,28 +12,20 @@ export class Utils {
     }
   }
 
-  public static getSeedTestCases(seedValue: number) {
-    let outputs = [];
-
+  private static _getSeededMemory(seed: Array<number>) {
     let { a, b, c, d, e, f, g, h } = Utils.getInitialValues();
 
-    var results = [];
-
-    for (let i = 0; i < 256; i++) {
-      results[i] = seedValue;
-    }
-
-    var memory = [];
+    let memory = [];
 
     for (let i = 0; i < 256; i += 8) {
-    	a += results[i];
-    	b += results[i + 1];
-    	c += results[i + 2];
-    	d += results[i + 3];
-    	e += results[i + 4];
-    	f += results[i + 5];
-    	g += results[i + 6];
-    	h += results[i + 7];
+    	a += seed[i];
+    	b += seed[i + 1];
+    	c += seed[i + 2];
+    	d += seed[i + 3];
+    	e += seed[i + 4];
+    	f += seed[i + 5];
+    	g += seed[i + 6];
+    	h += seed[i + 7];
 
     	a ^= b << 11;
     	d += a;
@@ -69,6 +61,20 @@ export class Utils {
     	memory[i + 6] = g;
     	memory[i + 7] = h;
     }
+
+    return memory;
+  }
+
+  public static getSeedTestCases(seedValue: number) {
+    let outputs = [];
+
+    var results = [];
+
+    for (let i = 0; i < 256; i++) {
+      results[i] = seedValue;
+    }
+
+    let memory = Utils._getSeededMemory(results);
 
     for (var _m in memory) {
       outputs.push([_m, seedValue, memory[_m]]);
