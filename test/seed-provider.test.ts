@@ -56,9 +56,9 @@ let testInitialSeededMemory = (location: number, input: number, expected: number
 }
 
 for (let testCase of [
-  Utils.getSeedTestCases(0), Utils.getSeedTestCases(1),
-  Utils.getSeedTestCases(64), Utils.getSeedTestCases(199),
-  Utils.getSeedTestCases(124), Utils.getSeedTestCases(255)
+  Utils.getSeededMemoryTestCases(0), Utils.getSeededMemoryTestCases(1),
+  Utils.getSeededMemoryTestCases(64), Utils.getSeededMemoryTestCases(199),
+  Utils.getSeededMemoryTestCases(124), Utils.getSeededMemoryTestCases(255)
 ]) {
   for (let memoryInfo of testCase) {
     testInitialSeededMemory(memoryInfo[0] as number, memoryInfo[1] as number, memoryInfo[2] as number);

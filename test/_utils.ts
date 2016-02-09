@@ -132,7 +132,7 @@ export class Utils {
     return memory;
   }
 
-  public static getSeedTestCases(seedValue: number) {
+  public static getSeededMemoryTestCases(seedValue: number) {
     let outputs = [];
 
     let seed = Utils.createUniformSeed(seedValue);
