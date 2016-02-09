@@ -64,3 +64,29 @@ for (let testCase of [
     testGetSeededMemory(memoryInfo[0] as number, memoryInfo[1] as number, memoryInfo[2] as number);
   }
 }
+
+let testGetShiftedMemory = (location: number, input: number, expected: number) => {
+  let seed = [];
+  for (let i = 0; i < 256; i++) {
+    seed[i] = input;
+  }
+
+ test(`_getShiftedMemory()[${location}] is ${expected} when seed is made up of ${input}s`, (t) => {
+   let provider = new SeedProvider();
+
+   let values = provider["_getShiftedMemory"](seed);
+
+   t.equal(values[location], expected, `correct value for ${location}`);
+   t.end();
+ });
+}
+
+for (let testCase of [
+  Utils.getShiftedMemoryTestCases(0), Utils.getShiftedMemoryTestCases(1),
+  Utils.getShiftedMemoryTestCases(64), Utils.getShiftedMemoryTestCases(199),
+  Utils.getShiftedMemoryTestCases(124), Utils.getShiftedMemoryTestCases(255)
+]) {
+  for (let memoryInfo of testCase) {
+    testGetShiftedMemory(memoryInfo[0] as number, memoryInfo[1] as number, memoryInfo[2] as number);
+  }
+}

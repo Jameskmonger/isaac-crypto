@@ -65,4 +65,8 @@ export class SeedProvider {
 
     return values;
   }
+
+  private _getShiftedMemory(seed: number[]): any {
+    return [];
+  }
 }
