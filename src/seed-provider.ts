@@ -16,7 +16,7 @@ export class SeedProvider {
     };
   }
 
-  private _getInitialSeededValues(seed: number[]): any {
+  private _getSeededMemory(seed: number[]): any {
     let initialValues = this._getInitialValues();
     let values = [];
 
