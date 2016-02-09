@@ -1,4 +1,6 @@
 export class Utils {
+  public static SIZE: number = 256;
+
   public static getInitialValues() {
     return {
       a: -3969392806,
@@ -10,6 +12,16 @@ export class Utils {
       g: -990909925,
       h: 811634969
     }
+  }
+
+  public static createUniformSeed(value: number): Array<number> {
+    var seed = [];
+
+    for (let i = 0; i < Utils.SIZE; i++) {
+      seed[i] = value;
+    }
+
+    return seed;
   }
 
   private static _getSeededMemory(seed: Array<number>) {
@@ -68,13 +80,9 @@ export class Utils {
   public static getSeedTestCases(seedValue: number) {
     let outputs = [];
 
-    var results = [];
+    let seed = Utils.createUniformSeed(seedValue);
 
-    for (let i = 0; i < 256; i++) {
-      results[i] = seedValue;
-    }
-
-    let memory = Utils._getSeededMemory(results);
+    let memory = Utils._getSeededMemory(seed);
 
     for (var _m in memory) {
       outputs.push([_m, seedValue, memory[_m]]);
