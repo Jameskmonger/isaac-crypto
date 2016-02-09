@@ -77,8 +77,7 @@ export class Utils {
     return memory;
   }
 
-  private static _getShiftedMemory(seedValue: number) {
-    let seed = Utils.createUniformSeed(seedValue);
+  private static _getShiftedMemory(seed: Array<number>) {
     let memory = Utils._getSeededMemory(seed);
 
     let [a, b, c, d, e, f, g, h] = [
@@ -139,6 +138,20 @@ export class Utils {
     let seed = Utils.createUniformSeed(seedValue);
 
     let memory = Utils._getSeededMemory(seed);
+
+    for (let _m in memory) {
+      outputs.push([_m, seedValue, memory[_m]]);
+    }
+
+    return outputs;
+  }
+
+  public static getShiftedMemoryTestCases(seedValue: number) {
+    let outputs = [];
+
+    let seed = Utils.createUniformSeed(seedValue);
+
+    let memory = Utils._getShiftedMemory(seed);
 
     for (let _m in memory) {
       outputs.push([_m, seedValue, memory[_m]]);
