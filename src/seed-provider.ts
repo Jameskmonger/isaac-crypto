@@ -22,7 +22,7 @@ export class SeedProvider {
     let initialValues = this._getInitialValues();
     let values = [];
 
-    for (let i = 0; i < 256; i += 8) {
+    for (let i = 0; i < this.SIZE; i += 8) {
       initialValues.a += seed[i];
 			initialValues.b += seed[i + 1];
       initialValues.c += seed[i + 2];
