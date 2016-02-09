@@ -15,7 +15,7 @@ export class Utils {
   }
 
   public static createUniformSeed(value: number): Array<number> {
-    var seed = [];
+    let seed = [];
 
     for (let i = 0; i < Utils.SIZE; i++) {
       seed[i] = value;
@@ -84,7 +84,7 @@ export class Utils {
 
     let memory = Utils._getSeededMemory(seed);
 
-    for (var _m in memory) {
+    for (let _m in memory) {
       outputs.push([_m, seedValue, memory[_m]]);
     }
 
