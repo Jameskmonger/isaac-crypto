@@ -22,6 +22,7 @@ export class IsaacGenerator {
     this._memory = SeedProvider.getMemory(seed);
 
     this._accumulator = 0;
+    this._results = [];
   }
 
   public getValue(): number {
