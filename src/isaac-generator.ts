@@ -1,8 +1,13 @@
+import { SeedProvider } from './seed-provider';
+
 export class IsaacGenerator {
   private _count: number;
+  private _memory: any;
 
-  constructor() {
+  constructor(seed: Array<number>) {
     this._count = 0;
+
+    this._memory = SeedProvider.getMemory(seed);
   }
 
   public getValue(): number {
@@ -14,6 +19,5 @@ export class IsaacGenerator {
   }
 
   private _randomise(): void {
-
   }
 }

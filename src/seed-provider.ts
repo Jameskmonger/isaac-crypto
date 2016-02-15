@@ -122,4 +122,8 @@ export class SeedProvider {
 
     return memory;
   }
+
+  public static getMemory(seed: Array<number>): Array<number> {
+    return new SeedProvider()._getShiftedMemory(seed);
+  }
 }
