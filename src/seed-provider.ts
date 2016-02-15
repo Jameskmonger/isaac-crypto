@@ -18,7 +18,7 @@ export class SeedProvider {
     };
   }
 
-  private _getSeededMemory(seed: number[]): any {
+  private _getSeededMemory(seed: Array<number>): Array<number> {
     let { a, b, c, d, e, f, g, h } = this._getInitialValues();
     let values = [];
 
@@ -68,7 +68,7 @@ export class SeedProvider {
     return values;
   }
 
-  private _getShiftedMemory(seed: number[]): any {
+  private _getShiftedMemory(seed: Array<number>): Array<number> {
     let memory = this._getSeededMemory(seed);
 
     let [a, b, c, d, e, f, g, h] = [
