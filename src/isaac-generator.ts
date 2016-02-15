@@ -4,7 +4,7 @@ export class IsaacGenerator {
   private _count: number;
   private _counter: number;
   private _accumulatorShifts: Array<(x: number) => number>;
-  private _memory: any;
+  private _memory: Array<number>;
   private _accumulator: number;
   private _results: Array<number>;
 
