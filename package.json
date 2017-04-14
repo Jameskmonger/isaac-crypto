@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "An ISAAC implementation for Node.JS",
   "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "npm run build && alsatian test.js --tap",
     "prepublish": "npm run build"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "repository": {
     "type": "git",
