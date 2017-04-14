@@ -1,12 +1,16 @@
 {
   "name": "isaac-crypto",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "An ISAAC implementation for Node.JS",
-  "main": "",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "npm run build && alsatian test.js --tap"
+    "test": "npm run build && alsatian test.js --tap",
+    "prepublish": "npm run build"
   },
+  "files": [
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jameskmonger/isaac-crypto.git"
