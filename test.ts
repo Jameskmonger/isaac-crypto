@@ -3,7 +3,6 @@ import * as path from "path";
 import { TestFixture, Test, Expect } from "alsatian";
 
 import { ISAACGenerator } from "./index";
-const Old = require("./old");
 
 const CASES_DIRECTORY = path.resolve(__dirname, "./cases/");
 
