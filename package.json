@@ -3,27 +3,22 @@
   "version": "0.0.1",
   "description": "An ISAAC implementation for Node.JS",
   "main": "",
-  "scripts": {},
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && alsatian test.js --tap"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jameskmonger/isaac-crypto.git"
   },
   "author": "James Monger <jameskmonger@hotmail.co.uk> (http://jamesmonger.com)",
-  "license": "Unlicense",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Jameskmonger/isaac-crypto/issues"
   },
   "homepage": "https://github.com/Jameskmonger/isaac-crypto#readme",
   "devDependencies": {
-    "del": "^2.2.0",
-    "gulp": "^3.9.1",
-    "gulp-istanbul": "^0.10.3",
-    "gulp-tape": "0.0.7",
-    "gulp-tsc": "^1.1.4",
-    "run-sequence": "^1.1.5",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.4.0",
-    "tslint": "^3.3.0",
-    "typescript": "^1.7.5"
+    "alsatian": "^1.3.1",
+    "typescript": "^2.2.2"
   }
 }

@@ -1,5 +1,3 @@
 node_modules
-typings
-build-test
-coverage
-npm-debug.log
+index.js
+test.js
