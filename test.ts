@@ -24,11 +24,11 @@ export class ISAACTests {
     // set up isaac
     let isaac = new ISAACGenerator(caseContents.seed);
 
-    // go through each test case key, generate a new one and check they match
-    caseContents.keys.forEach(k => {
-      let nextKey = isaac.getNextKey();
+    // go through each test case results, generate a new one and check they match
+    caseContents.results.forEach(r => {
+      let nextResult = isaac.getNextResult();
 
-      Expect(nextKey).toBe(k);
+      Expect(nextResult).toBe(r);
     });
   }
 
