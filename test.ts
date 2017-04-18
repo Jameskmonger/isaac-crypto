@@ -1,26 +1,17 @@
-import * as fs from "fs";
-import * as path from "path";
 import { TestFixture, Test, Expect } from "alsatian";
+import * as cases from "isaac-crypto-test-cases";
 
 import { ISAACGenerator } from "./index";
-
-const CASES_DIRECTORY = path.resolve(__dirname, "./cases/");
 
 @TestFixture()
 export class ISAACTests {
 
   @Test()
   public executeTestCases() {
-    let files = fs.readdirSync(CASES_DIRECTORY);
-
-    files.forEach(f => this.executeTestCase(f));
+    cases.forEach(c => this.executeTestCase(c));
   }
 
-  private executeTestCase(caseName: string) {
-    // get case info
-    let casePath = path.resolve(CASES_DIRECTORY, caseName);
-    let caseContents = require(casePath);
-
+  private executeTestCase(caseContents: any) {
     // set up isaac
     let isaac = new ISAACGenerator(caseContents.seed);
 
