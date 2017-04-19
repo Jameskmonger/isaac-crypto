@@ -1,5 +1,9 @@
 import getSigned32BitInt from "get-signed-32-bit-int";
 
+import initialiseTempMemory from "./memory/initialise-temp-memory";
+import scrambleMemory from "./memory/scramble-memory";
+import initializationPass from "./memory/initialization-pass";
+
 // daxxog/project317 used as reference
 export class ISAACGenerator {
 
@@ -15,12 +19,9 @@ export class ISAACGenerator {
   private results: Array<number>;
 
   constructor(seed: Array<number>) {
+    this.results = Array(ISAACGenerator.SIZE);
     this.memory = Array(ISAACGenerator.SIZE);
-
-    // initialise the results by cloning the seed
-    this.results = seed.slice();
-
-    this.initializeKeySet();
+    this.initializeMemory(seed);
   }
 
   public getNextResult(): number {
@@ -33,7 +34,8 @@ export class ISAACGenerator {
   };
 
   private generateResults(): void {
-      this.lastResult += ++this.counter;
+      this.counter += 1;
+      this.lastResult += this.counter;
       for(let i = 0; i < ISAACGenerator.SIZE; i++) {
           switch (i & 3) {
             case 0:
@@ -50,15 +52,20 @@ export class ISAACGenerator {
               break;
           }
 
-          let x = this.memory[i];
           this.accumulator += this.memory[(i + 128) & 0xff];
-          let y = this.memory[i] =  this.memory[(x >>> 2) & 0xff] + this.accumulator + this.lastResult;
-          this.results[i] = this.lastResult = this.memory[(y >>> 10) & 0xff] + x;
+
+          const x = this.memory[i];
+          this.memory[i] = this.memory[(x >>> 2) & 0xff] + this.accumulator + this.lastResult;
+
+          const y = this.memory[i];
+          this.results[i] = this.memory[(y >>> 10) & 0xff] + x;
+
+          this.lastResult = this.results[i];
       }
   }
 
   private getSafeResult(index: number) {
-    let result = this.results[index];
+    const result = this.results[index];
 
     if (result === undefined) {
       return 0;
@@ -67,76 +74,15 @@ export class ISAACGenerator {
     return getSigned32BitInt(result);
   }
 
-  private mixStore(store: Array<number>): void {
-    store[0] ^= store[1] << 11;
-    store[3] += store[0];
-    store[1] += store[2];
-    store[1] ^= store[2] >>> 2;
-    store[4] += store[1];
-    store[2] += store[3];
-    store[2] ^= store[3] << 8;
-    store[5] += store[2];
-    store[3] += store[4];
-    store[3] ^= store[4] >>> 16;
-    store[6] += store[3];
-    store[4] += store[5];
-    store[4] ^= store[5] << 10;
-    store[7] += store[4];
-    store[5] += store[6];
-    store[5] ^= store[6] >>> 4;
-    store[0] += store[5];
-    store[6] += store[7];
-    store[6] ^= store[7] << 8;
-    store[1] += store[6];
-    store[7] += store[0];
-    store[7] ^= store[0] >>> 9;
-    store[2] += store[7];
-    store[0] += store[1];
-  }
-
-  private incrementStore(store: Array<number>, startIndex: number, valueFunction: (index: number) => number): void {
-    for (let i = 0; i < 8; i++) {
-      store[i] += valueFunction(startIndex + i);
-    }
-  }
-
-  private placeStoreInMemory(memory: Array<number>, store: Array<number>, index: number): void {
-    for (let i = 0; i < 8; i++) {
-      memory[index + i] = store[i];
-    }
-  };
-
-  private initialiseStore(): Array<number> {
-    const store = [];
-
-    for (let i = 0; i < 8; i++) {
-      store[i] = ISAACGenerator.MAGIC_NUMBER;
-    }
-
-    return store;
-  }
-
-  private initializeKeySet(): void {
-    const store = this.initialiseStore();
-
-    const resultValueFunction = (index: number) => this.getSafeResult(index);
-    const memoryValueFunction = (index: number) => this.memory[index];
+  private initializeMemory(seed: Array<number>): void {
+    const temp = initialiseTempMemory(ISAACGenerator.MAGIC_NUMBER);
 
     for(let i = 0; i < 4; i++) {
-        this.mixStore(store);
+        scrambleMemory(temp);
     }
 
-    for(let i = 0; i < ISAACGenerator.SIZE; i += 8) {
-        this.incrementStore(store, i, resultValueFunction);
-        this.mixStore(store);
-        this.placeStoreInMemory(this.memory, store, i);
-    }
-
-    for(let i = 0; i < ISAACGenerator.SIZE; i += 8) {
-        this.incrementStore(store, i, memoryValueFunction);
-        this.mixStore(store);
-        this.placeStoreInMemory(this.memory, store, i);
-    }
+    initializationPass(ISAACGenerator.SIZE, this.memory, temp, (index: number) => seed[index] || 0);
+    initializationPass(ISAACGenerator.SIZE, this.memory, temp, (index: number) => this.memory[index]);
 
     this.generateResults();
     this.count = ISAACGenerator.SIZE;
