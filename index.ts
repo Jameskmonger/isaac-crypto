@@ -1,5 +1,6 @@
 import getSigned32BitInt from "get-signed-32-bit-int";
 
+// daxxog/project317 used as reference
 export class ISAACGenerator {
 
   private static SIZE: number = 256;
