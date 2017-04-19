@@ -1,0 +1,26 @@
+export default (memory: Array<number>): void => {
+  memory[0] ^= memory[1] << 11;
+  memory[3] += memory[0];
+  memory[1] += memory[2];
+  memory[1] ^= memory[2] >>> 2;
+  memory[4] += memory[1];
+  memory[2] += memory[3];
+  memory[2] ^= memory[3] << 8;
+  memory[5] += memory[2];
+  memory[3] += memory[4];
+  memory[3] ^= memory[4] >>> 16;
+  memory[6] += memory[3];
+  memory[4] += memory[5];
+  memory[4] ^= memory[5] << 10;
+  memory[7] += memory[4];
+  memory[5] += memory[6];
+  memory[5] ^= memory[6] >>> 4;
+  memory[0] += memory[5];
+  memory[6] += memory[7];
+  memory[6] ^= memory[7] << 8;
+  memory[1] += memory[6];
+  memory[7] += memory[0];
+  memory[7] ^= memory[0] >>> 9;
+  memory[2] += memory[7];
+  memory[0] += memory[1];
+};

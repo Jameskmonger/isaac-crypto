@@ -1,4 +1,4 @@
 node_modules
-index.js
+src/**/*.js
 test.js
 *.d.ts
