@@ -1,7 +1,7 @@
 import { TestFixture, Test, Expect } from "alsatian";
 import * as cases from "isaac-crypto-test-cases";
 
-import { ISAACGenerator } from "./index";
+import { ISAACGenerator } from "./src/index";
 
 @TestFixture()
 export class ISAACTests {
