@@ -1,6 +1,6 @@
 {
   "name": "isaac-crypto",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "An ISAAC implementation for Node.JS",
   "main": "index.js",
   "typings": "index.d.ts",
