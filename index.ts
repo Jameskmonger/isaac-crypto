@@ -24,14 +24,14 @@ export class ISAACGenerator {
 
   public getNextResult(): number {
       if(this.count-- == 0) {
-          this.isaac();
+          this.generateResults();
           this.count = ISAACGenerator.SIZE - 1;
       }
 
       return this.getSafeResult(this.count);
   };
 
-  private isaac(): void {
+  private generateResults(): void {
       this.lastResult += ++this.counter;
       for(let i = 0; i < ISAACGenerator.SIZE; i++) {
           switch (i & 3) {
@@ -141,7 +141,7 @@ export class ISAACGenerator {
           this.memory[i + 7] = h;
       }
 
-      this.isaac();
+      this.generateResults();
       this.count = ISAACGenerator.SIZE;
   }
 
