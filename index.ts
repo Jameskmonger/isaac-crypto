@@ -1,4 +1,4 @@
-const get32BitInteger = val => val | 0;
+import getSigned32BitInt from "get-signed-32-bit-int";
 
 export class ISAACGenerator {
 
@@ -62,12 +62,12 @@ export class ISAACGenerator {
       return 0;
     }
 
-    return get32BitInteger(result);
+    return getSigned32BitInt(result);
   }
 
   private initializeKeySet(): void {
       let a, b, c, d, e, f, g, h;
-      a = b = c = d = e = f = g = h = get32BitInteger(0x9e3779b9); //(ha | 0)x: convert to a (si | 0)gned 32-bit (in | 0)teger
+      a = b = c = d = e = f = g = h = getSigned32BitInt(0x9e3779b9); //(ha | 0)x: convert to a (si | 0)gned 32-bit (in | 0)teger
 
       const mixSeed = () => {
         a ^= b << 11;
