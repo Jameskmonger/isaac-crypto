@@ -2,16 +2,16 @@
   "name": "isaac-crypto",
   "version": "2.0.3",
   "description": "An ISAAC implementation for Node.JS",
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "src/index.js",
+  "typings": "src/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "npm run build && alsatian test.js --tap",
     "prepublish": "npm test && npm run build"
   },
   "files": [
-    "index.js",
-    "index.d.ts"
+    "src/**/*.js",
+    "src/**/*.d.ts"
   ],
   "repository": {
     "type": "git",
