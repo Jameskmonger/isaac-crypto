@@ -2,6 +2,8 @@
 
 An implementation of ISAAC for Node.js. More information about ISAAC can be found [here](http://burtleburtle.net/bob/rand/isaacafa.html).
 
+This implementation of the algorithm has 24 test seeds, each of which is tested for correctness within the first 1 million results. These results are compared with results obtained from a known-good Java implementation of ISAAC, using the same seeds.
+
 ## Installation
 
     $ npm install isaac-crypto --save
@@ -10,7 +12,7 @@ An implementation of ISAAC for Node.js. More information about ISAAC can be foun
 
     import { ISAACGenerator } from "isaac-crypto";
 
-    const generator = new ISAACGenerator([ 1, 2, 3, 4]);
+    const generator = new ISAACGenerator([ 1, 2, 3, 4 ]);
 
     generator.getNextResult(); // -621246914
     generator.getNextResult(); // 1957022519
