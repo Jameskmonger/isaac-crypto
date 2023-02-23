@@ -1,5 +1,3 @@
-import getSigned32BitInt from "get-signed-32-bit-int";
-
 import initialiseTempMemory from "./memory/initialise-temp-memory";
 import scrambleMemory from "./memory/scramble-memory";
 import initializationPass from "./memory/initialization-pass";
@@ -8,7 +6,7 @@ import initializationPass from "./memory/initialization-pass";
 export class ISAACGenerator {
 
   private static SIZE: number = 256;
-  private static MAGIC_NUMBER: number = getSigned32BitInt(0x9e3779b9);
+  private static MAGIC_NUMBER: number = 0x9e3779b9 & 0xffffffff;
 
   private lastResult: number = 0;
   private counter: number = 0;
@@ -71,7 +69,7 @@ export class ISAACGenerator {
       return 0;
     }
 
-    return getSigned32BitInt(result);
+    return result & 0xffffffff;
   }
 
   private initializeMemory(seed: Array<number>): void {

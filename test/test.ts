@@ -1,5 +1,5 @@
 const fs = require("fs");
-import { ISAACGenerator } from "../src/index";
+import { ISAACGenerator } from "../src";
 
 /**
  * A test case is a seed and a list of expected results.
