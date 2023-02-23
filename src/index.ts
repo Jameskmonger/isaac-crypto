@@ -23,43 +23,43 @@ export class ISAACGenerator {
   }
 
   public getNextResult(): number {
-      if(this.count-- == 0) {
-          this.generateResults();
-          this.count = ISAACGenerator.SIZE - 1;
-      }
+    if (this.count-- == 0) {
+      this.generateResults();
+      this.count = ISAACGenerator.SIZE - 1;
+    }
 
-      return this.getSafeResult(this.count);
+    return this.getSafeResult(this.count);
   };
 
   private generateResults(): void {
-      this.counter = (this.counter + 1) & 0xffffffff;
-      this.lastResult = (this.lastResult + this.counter) & 0xffffffff;
-      for(let i = 0; i < ISAACGenerator.SIZE; i++) {
-          switch (i & 3) {
-            case 0:
-              this.accumulator ^= this.accumulator << 13;
-              break;
-            case 1:
-              this.accumulator ^= this.accumulator >>> 6;
-              break;
-            case 2:
-              this.accumulator ^= this.accumulator << 2;
-              break;
-            case 3:
-              this.accumulator ^= this.accumulator >>> 16;
-              break;
-          }
-
-          this.accumulator = (this.accumulator + this.memory[(i + 128) & 0xff]) & 0xffffffff;
-
-          const x = this.memory[i];
-          this.memory[i] = (this.memory[(x >>> 2) & 0xff] + this.accumulator + this.lastResult) & 0xffffffff;
-
-          const y = this.memory[i];
-          this.results[i] = (this.memory[(y >>> 10) & 0xff] + x) & 0xffffffff;
-
-          this.lastResult = this.results[i];
+    this.counter = (this.counter + 1) & 0xffffffff;
+    this.lastResult = (this.lastResult + this.counter) & 0xffffffff;
+    for (let i = 0; i < ISAACGenerator.SIZE; i++) {
+      switch (i & 3) {
+        case 0:
+          this.accumulator ^= this.accumulator << 13;
+          break;
+        case 1:
+          this.accumulator ^= this.accumulator >>> 6;
+          break;
+        case 2:
+          this.accumulator ^= this.accumulator << 2;
+          break;
+        case 3:
+          this.accumulator ^= this.accumulator >>> 16;
+          break;
       }
+
+      this.accumulator = (this.accumulator + this.memory[(i + 128) & 0xff]) & 0xffffffff;
+
+      const x = this.memory[i];
+      this.memory[i] = (this.memory[(x >>> 2) & 0xff] + this.accumulator + this.lastResult) & 0xffffffff;
+
+      const y = this.memory[i];
+      this.results[i] = (this.memory[(y >>> 10) & 0xff] + x) & 0xffffffff;
+
+      this.lastResult = this.results[i];
+    }
   }
 
   private getSafeResult(index: number) {
@@ -75,8 +75,8 @@ export class ISAACGenerator {
   private initializeMemory(seed: Array<number>): void {
     const temp = initialiseTempMemory(ISAACGenerator.MAGIC_NUMBER);
 
-    for(let i = 0; i < 4; i++) {
-        scrambleMemory(temp);
+    for (let i = 0; i < 4; i++) {
+      scrambleMemory(temp);
     }
 
     initializationPass(ISAACGenerator.SIZE, this.memory, temp, (index: number) => seed[index] || 0);
