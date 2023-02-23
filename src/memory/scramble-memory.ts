@@ -1,4 +1,12 @@
-export default (memory: Array<number>): void => {
+/**
+ * Scrambles a block of memory using a series of bitwise operations that depend on the current values in the memory
+ * block.
+ * 
+ * This is part of the ISAAC algorithm and is used to increase the entropy of the generated results.
+ * 
+ * @param memory The memory block to scramble.
+ */
+export default (memory: number[]): void => {
   memory[0] ^= memory[1] << 11;
   memory[0] &= 0xffffffff;
 
