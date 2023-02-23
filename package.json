@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/Jameskmonger/isaac-crypto#readme",
   "devDependencies": {
-    "isaac-crypto-test-cases": "^1.0.3",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
   },

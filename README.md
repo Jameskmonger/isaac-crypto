@@ -15,6 +15,14 @@ An implementation of ISAAC for Node.js. More information about ISAAC can be foun
     generator.getNextResult(); // -621246914
     generator.getNextResult(); // 1957022519
 
+## Development
+
+Install all dependencies with `npm`.
+
+Run tests with `npm test`.
+
+Test cases can be set up in `./test/cases`. Each test case represents a set of expected results for a given seed. Logfiles for tests go in `./test/logs` under their test name.
+
 ## License
 
 `isaac-crypto` is licensed under The MIT License. To see the full license text included with the project, visit the [LICENSE file](/LICENSE).
