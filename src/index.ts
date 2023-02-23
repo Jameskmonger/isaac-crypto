@@ -34,8 +34,8 @@ export class ISAACGenerator {
   };
 
   private generateResults(): void {
-      this.counter += 1;
-      this.lastResult += this.counter;
+      this.counter = (this.counter + 1) & 0xffffffff;
+      this.lastResult = (this.lastResult + this.counter) & 0xffffffff;
       for(let i = 0; i < ISAACGenerator.SIZE; i++) {
           switch (i & 3) {
             case 0:
@@ -52,13 +52,13 @@ export class ISAACGenerator {
               break;
           }
 
-          this.accumulator += this.memory[(i + 128) & 0xff];
+          this.accumulator = (this.accumulator + this.memory[(i + 128) & 0xff]) & 0xffffffff;
 
           const x = this.memory[i];
-          this.memory[i] = this.memory[(x >>> 2) & 0xff] + this.accumulator + this.lastResult;
+          this.memory[i] = (this.memory[(x >>> 2) & 0xff] + this.accumulator + this.lastResult) & 0xffffffff;
 
           const y = this.memory[i];
-          this.results[i] = this.memory[(y >>> 10) & 0xff] + x;
+          this.results[i] = (this.memory[(y >>> 10) & 0xff] + x) & 0xffffffff;
 
           this.lastResult = this.results[i];
       }
