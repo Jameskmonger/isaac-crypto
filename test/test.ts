@@ -1,4 +1,4 @@
-import * as fs from "fs";
+const fs = require("fs");
 import { ISAACGenerator } from "../src/index";
 
 /**
@@ -55,22 +55,22 @@ function executeTestCase(testCase: TestCase): boolean {
   // set up isaac
   let isaac = new ISAACGenerator(testCase.seed);
   let log = "";
+  let anyFailed = false;
 
-  // go through each test case results, generate a new one and check they match
-  testCase.results.forEach((expected, index) => {
+  for (let i = 0; i < testCase.results.length; i++) {
     let actual = isaac.getNextResult();
 
-    if (actual !== expected) {
-      log += (`FAILURE [index: ${index}] expected: ${expected}, actual: ${actual}, diff: ${expected - actual}\n`)
-      return false;
+    if (actual !== testCase.results[i]) {
+      log += (`FAILURE [index: ${i}] expected: ${testCase.results[i]}, actual: ${actual}, diff: ${testCase.results[i] - actual}\n`);
+      anyFailed = true;
     }
-  });
+  }
 
   log += (`\n\n========\n\nTest case passed: ${testCase.seed}\n`);
 
   writeLog(testCase.seed, log);
 
-  return true;
+  return !anyFailed;
 }
 
 /**
@@ -84,7 +84,7 @@ function runTests(testCases: TestCase[]) {
     process.exit(0);
   }
 
-  console.error("### All tests passed. Exiting with code 1.");
+  console.error("### Some tests failed. Exiting with code 1.");
   process.exit(1);
 }
 
